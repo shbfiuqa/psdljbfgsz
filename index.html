@@ -31,24 +31,11 @@
     return nextUrl;
   }
 
-  // Function to generate a random string of alphanumeric characters up to 13 characters long
-  function generateRandomString() {
-    const length = Math.floor(Math.random() * 13) + 1; // Random length between 1 and 13
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    for (let i = 0; i < length; i++) {
-      result += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return result;
-  }
-
   // Main function to execute the redirect
   function redirectToNextUrl() {
     const queryString = getQueryString();
     const nextUrl = getNextUrl();
-    const randomString = generateRandomString(); // Generate a random string of up to 13 characters
-    const separator = queryString ? '&' : '?'; // Use '&' if query string exists, otherwise use '?'
-    const fullUrl = `${nextUrl}${queryString}${separator}${randomString}`;
+    const fullUrl = nextUrl + queryString;
 
     // Redirect to the constructed URL
     window.location.href = fullUrl;
